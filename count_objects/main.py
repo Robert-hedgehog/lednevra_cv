@@ -43,29 +43,19 @@ def descritize(image):
 
     return result
 
+files = ["example1.npy", "example2.npy"]
+for file in files:
+    image = np.load(file)
 
-image = np.load("example2.npy")
+    if image.ndim == 3:
 
-if image.ndim == 3:
+        print(f"Total objects in {file}: {sum([count_objects(descritize(image[:, :, i])) for i in range(image.shape[2])])}")
+        print(image.shape)
+        plt.imshow((image))
+        plt.show()
 
-    print(sum([count_objects(descritize(image[:, :, i])) for i in range(image.shape[2])]))
-    print(image.shape)
-    plt.imshow((image))
-    plt.show()
+    elif image.ndim == 2:
 
-    '''plt.figure(figsize=(10, 5))
- 
-    plt.subplot(131)
-    plt.imshow(descritize(image[:, :, 0]))
-    plt.subplot(132)
-    plt.imshow(descritize(image[:, :, 1]))
-    plt.subplot(133)
-    plt.imshow(descritize(image[:, :, 2]))
-
-    plt.show()'''
-
-elif image.ndim == 2:
-
-    print(count_objects(descritize(image)))
-    plt.imshow(image)
-    plt.show()
+        print(f"Total objects in {file}: {count_objects(descritize(image))}")
+        plt.imshow(image)
+        plt.show()
