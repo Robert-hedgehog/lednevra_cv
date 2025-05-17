@@ -1,12 +1,6 @@
 import cv2
 import zmq
-import subprocess
 import numpy as np
-
-# Переключить в ручной режим экспозиции
-subprocess.run(["v4l2-ctl", "-d", "/dev/video0", "-c", "auto_exposure=1"])
-# Установить значение экспозиции
-subprocess.run(["v4l2-ctl", "-d", "/dev/video0", "-c", "exposure_time_absolute=700"])
 
 host = "84.237.21.36"
 port = 6002
