@@ -5,11 +5,6 @@ import os
 import json
 import random
 
-# Переключить в ручной режим экспозиции
-subprocess.run(["v4l2-ctl", "-d", "/dev/video0", "-c", "auto_exposure=1"])
-# Установить значение экспозиции
-subprocess.run(["v4l2-ctl", "-d", "/dev/video0", "-c", "exposure_time_absolute=200"])
-
 cv2.namedWindow("Camera", cv2.WINDOW_NORMAL)
 
 capture = cv2.VideoCapture(0)
